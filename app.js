@@ -117,11 +117,14 @@ app.use((req,res,next)=>{
 });
 
 
-
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
 //access route files
+app.use("/",userRouter);
 app.use("/listings",listings);
 app.use("/listings/:id/reviews",reviews);
-app.use("/",userRouter);
+
 
 
 /*app.get("/testListing",async(req,res)=>{
