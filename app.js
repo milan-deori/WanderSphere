@@ -45,11 +45,11 @@ app.use(express.static(path.join(__dirname,"public/js")));
 
 //mongo connection
 
-const dbUrl=process.env.ATLASTDB_UR;
+const dbUrl=process.env.ATLASDB_URL;
 const mainUrl='mongodb://127.0.0.1:27017/wanderlust';
 
 async function main() {
-    await mongoose.connect(mainUrl);
+    await mongoose.connect(dbUrl);
   }
 main()
 .then(()=>{
@@ -61,7 +61,7 @@ main()
 
 //user active dates
 const store=MongoStore.create({
-    mongoUrl:'mongodb+srv://milandeori803:Onb15AlajnaCVpYV@cluster0.seb2r.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
+    mongoUrl:dbUrl,
     crypto:{
         secret:"SuperSecretCode",
     },
